@@ -1,0 +1,14 @@
+{% extends "base_user_auth.html"%}
+
+
+{% block title %}
+Login
+{% endblock%}
+
+{% block buttons %}
+    <input class="btn btn-default btn-block" type="submit" value = "Sign In">
+    <a href="{% url 'registration' %}" class="btn btn-default btn-block" role="button">Go To Sign Up</a>
+    <a href="{% url 'reset_password' %}" class="btn btn-default btn-block" role="button">Reset Password</a>
+{% endblock%}
+
+

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Grumblr
+{% endblock%}
+
+{% block content%}
+    <h1 class="text-center" style="">Grumblr</h1>
+
+    {% if request.user.is_authenticated %}
+        <p class="text-center text-muted">Congratulations !!</p>
+        <p class="text-center text-muted">You've logged in, {{ request.user.username}}</p>
+    {% else %}
+        <p class="text-center text-muted">You haven't Logged in</p>
+        <p class="text-center text-muted">Please log in first</p>
+        <div class="container container-central">
+            <a href="{% url 'registration' %}" class="btn btn-default btn-block" role="button">Sign Up</a>
+            <a href="{% url 'login' %}" class="btn btn-default btn-block" role="button">Sign In</a>
+        </div>
+    {% endif %}
+{% endblock %}
+

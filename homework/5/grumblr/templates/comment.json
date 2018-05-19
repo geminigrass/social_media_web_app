@@ -1,0 +1,9 @@
+{
+  "author" : "{{comment.author.username}}",
+  "time": "{{comment.time}}",
+  "content": "{{comment.content}}",
+  "belong_to_post":"{{comment.belong_to_post.pk}}",
+  "author_pic" : {% if comment.author.userprofile.img %}"{{comment.author.userprofile.img.url}}"{% else %}null{% endif %}
+}
+
+

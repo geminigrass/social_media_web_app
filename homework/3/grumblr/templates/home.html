@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grumbl</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+
+    <link rel="stylesheet" href= "{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href= "{% static 'css/mycss.css' %}">
+
+
+</head>
+
+<body>
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="home.html">Grumblr</a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="global.html">Global Stream</a></li>
+              <li><a href="newpost.html">New Post</a></li>
+              <li><a href="profile/{{ request.user.username}}">Profile</a></li>
+              <li><a href="logout.html">Log Out</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container container-central" >
+        <h1 class="text-center" style="">Grumblr</h1>
+
+        {% if request.user.is_authenticated %}
+            <p class="text-center text-muted">Congratulations !!</p>
+            <p class="text-center text-muted">You've logged in, {{ request.user.username}}</p>
+        {% else %}
+            <p class="text-center text-muted">You haven't Logged in</p>
+            <p class="text-center text-muted">Please log in first</p>
+            <a href="registration.html" class="btn btn-default btn-block" role="button">Sign Up</a>
+            <a href="login.html" class="btn btn-default btn-block" role="button">Sign In</a>
+        {% endif %}
+
+
+    </div>
+
+</body>
+</html>

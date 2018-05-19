@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Information Webapp</title>
+    <meta charset="utf-8">
+</head>
+
+<body>
+{% if messages %}
+  {% for m in messages %}
+<p style="color:red;">{{m}}</p>
+  {% endfor %}
+{% endif %}
+<p>Create a student:</p>
+<form action="/sio/create-student" method="post">
+
+    {% for erro in create_student_form.non_field_errors %}
+        <p style="color: red;">{{ erro }}</p>
+    {% endfor %}
+
+    <table>
+    {% for field in create_student_form.visible_fields %}
+    <tr>
+      <td>{{field.label_tag}}</td>
+      <td>{{field}}</td>
+      <td style="color: red">{{field.errors}}</td>
+    </tr>
+    {% endfor %}
+    </table>
+
+    {% for field in create_student_form.hiddend_fields %}
+        {{ field }}
+    {% endfor %}
+
+    {% csrf_token %}
+    <input type="submit" value="Register" />
+</form>
+
+<hr>
+<p>Create a course:</p>
+<form action="/sio/create-course" method="post">
+    {% for erro in create_course_form.non_field_errors %}
+        <p style="color: red;">{{ erro }}</p>
+    {% endfor %}
+
+    <table>
+    {% for field in create_course_form.visible_fields %}
+    <tr>
+      <td>{{field.label_tag}}</td>
+      <td>{{field}}</td>
+      <td style="color: red">{{field.errors}}</td>
+    </tr>
+    {% endfor %}
+    </table>
+
+    {% for field in create_course_form.hiddend_fields %}
+        {{ field }}
+    {% endfor %}
+
+    {% csrf_token %}
+    <input type="submit" value="Register" />
+</form>
+
+<hr>
+<p>Register a student for a course:</p>
+<form action="/sio/register-student" method="post">
+    {% for erro in create_course_form.non_field_errors %}
+        <p style="color: red;">{{ erro }}</p>
+    {% endfor %}
+
+    {% for field in register_student_form.visible_fields %}
+        {{ field.label_tag }}
+        {{ field }}
+        <p style="color: red">{{field.errors}}</p>
+    {% endfor %}
+
+    {% for field in create_course_form.hiddend_fields %}
+        {{ field }}
+    {% endfor %}
+
+    {% csrf_token %}
+    <input type="submit" value="Submit">
+</form>
+
+<hr>
+<p>Current course rosters:
+<ul>
+    {% for course in courses %}
+      <li>{{course}}<ul>
+      {% for student in course.students.all %}
+        <li>{{student}}</li>
+{#          {% for c in Course.objects.filer(student = student) %}#}
+{#              {{ c }}#}
+{#          {% endfor %}#}
+{#          {{ student.course_set.all() }}#}
+      {% endfor %}
+      </ul></li>
+    {% endfor %}
+</ul>
+</p>
+
+</body>
+

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}
+Follower Stream
+{% endblock%}
+
+{% block js_block %}
+        <script src="../static/js/jquery-3.2.1.min.js" type="text/javascript"></script>
+        <script src="../static/js/view_follower.js" type="text/javascript"></script>
+{% endblock %}
+
+
+
+{% block content %}
+
+  <h1 class="text-center">Follower Stream</h1>
+    <input type="hidden" id="timestamp" value="{{timestamp}}">
+
+    <div id='post-list'></div>
+
+
+{% endblock %}

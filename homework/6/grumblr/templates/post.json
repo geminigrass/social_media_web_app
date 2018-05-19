@@ -1,0 +1,10 @@
+{
+  "author_name" : "{{post.author.username}}",
+  "time": "{{post.time}}",
+  "content": "{{post.content}}",
+  "title":"{{post.title}}",
+  "post_id":"{{post.pk}}",
+  "author_pic_url" : {% if post.author.userprofile.img %}"{{post.author.userprofile.img.url}}"{% else %}null{% endif %}
+}
+
+

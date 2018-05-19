@@ -1,0 +1,19 @@
+.container-central{
+  /*max-width: 60%;*/
+  height: calc(100% - 20px);
+  width: calc(50% + 40px);
+}
+
+.center-block{
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.panel-body{
+  background: lightblue;
+}
+
+/*.panel-footer{*/
+  /*background: lightblue;*/
+/*}*/

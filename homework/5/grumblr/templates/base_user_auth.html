@@ -1,0 +1,19 @@
+{% extends "base.html"%}
+
+{% block content %}
+    {% block form %}
+        <h1 class="text-center">Grumblr</h1>
+        <form class="container container-central" method ="post">
+            {% csrf_token %}
+            {% if errors %}
+            <li>{{ errors }}</li>
+            {% endif %}
+
+            {{form.as_p}}
+
+            {% block buttons %}
+            {% endblock%}
+        </form>
+
+    {% endblock %}
+{% endblock%}

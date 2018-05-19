@@ -1,0 +1,36 @@
+.container{
+    max-width: 250px;
+    /*background: pink;*/
+    margin: 50px 100px;
+}
+
+.screen {
+	height: 40px;
+	width: 230px;
+    text-align: right;
+	background: green;
+	margin: 50px 20px 10px 0px;
+	padding-right: 20px;
+    padding-top: 10px;
+}
+
+.buttons{
+	width: 250px;
+}
+
+button:hover{
+    background: pink;
+}
+
+button{
+    border-radius: 7px ;
+    width: 62px;
+    float: right;
+}
+
+[name = "button_num"]{
+    background: green;
+}
+[name = "button_op"]{
+    background: red;
+}

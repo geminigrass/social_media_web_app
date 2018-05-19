@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}
+Follower Stream
+{% endblock%}
+
+
+
+{% block content %}
+
+  <h1 class="text-center">Follower Stream</h1>
+
+  {% for post in post_list %}
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h5 class="panel-title">
+          <a href="{% url 'view_profile' post.author.username %}">
+            {{post.title}}
+          </a>
+        </h5>
+      </div>
+      <div class="panel-body">
+        {{ post.content }}
+      </div>
+      <div class="panel-footer text-muted">
+        {{ post.time }}, by <a href="{% url 'view_profile' post.author.username %}">{{ post.author }}</a>
+        {% if post.author.userprofile.img %}
+        <img src="{{post.author.userprofile.img.url}}" class="img-thumbnail img-responsive" width="40" height="40">
+        {% endif %}
+
+      </div>
+    </div>
+  {% endfor%}
+
+{% endblock %}

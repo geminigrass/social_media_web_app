@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Calculator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{%static 'css/my_css.css' %}">
+</head>
+
+<body>
+        <form action="" method="POST">
+            {% csrf_token %}
+                <input type="hidden" name="cur_btn_num" value="{{cur_btn_num}}">
+                <input type="hidden" name="result" value="{{result}}">
+                <input type="hidden" name="pre_operation" value="{{pre_operation}}">
+                <input type="hidden" name="num_screen" value="{{num_screen}}">
+
+            <div class="container container-central">
+
+                <div class="screen">
+                    {% if num_screen %}
+                        {{num_screen}}
+                    {% endif %}
+
+                    {% if not num_screen %}
+                        0
+                    {% endif%}
+                </div>
+
+                <div class="buttons">
+                    <div class="button-group">
+                        <button type="submit" name="button_op" value="+">+</button>
+                    <button type="submit" name="button_num" value="7">7</button>
+                    <button type="submit" name="button_num" value="8">8</button>
+                    <button type="submit" name="button_num" value="9">9</button>
+
+                    </div>
+                    <div class="button-group">
+                        <button type="submit" name="button_op" value="-">-</button>
+                    <button type="submit" name="button_num" value="4">4</button>
+                    <button type="submit" name="button_num" value="5">5</button>
+                    <button type="submit" name="button_num" value="6">6</button>
+
+                    </div>
+                    <div class="button-group">
+                        <button type="submit" name="button_op" value="*">*</button>
+                    <button type="submit" name="button_num" value="1">1</button>
+                    <button type="submit" name="button_num" value="2">2</button>
+                    <button type="submit" name="button_num" value="3">3</button>
+
+                    </div>
+                    <div class="button-group">
+                        <button type="submit" name="button_op" value="/">/</button>
+                        <button type="submit" name="button_op" value="=">=</button>
+                        <button type="submit" name="button_num" value="0">0</button>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+</body>
+</html>

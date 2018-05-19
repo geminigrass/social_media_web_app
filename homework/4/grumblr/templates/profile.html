@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}
+Profile
+{% endblock%}
+
+{% block content %}
+
+    <div class="row">
+
+      <div class="col-sm-4 col-md-4 col-lg-4">
+
+        {% if view_self %}
+          <a href="{% url 'edit_profile' %}"
+             class="btn btn-default btn-block"
+             role="button">
+            Edit My Profile
+          </a>
+          <a href="{% url 'change_password' %}"
+             class="btn btn-default btn-block"
+             role="button">
+            Change My Password
+          </a>
+          <a href="{% url 'reset_password' %}"
+             class="btn btn-default btn-block"
+             role="button">
+            Reset Password
+          </a>
+
+
+        {% else %}
+          {% if followed %}
+            <a href="{% url 'unfollow' user.username %}"
+             class="btn btn-default btn-block"
+             role="button">
+            Unfollow
+            </a>
+          {% else %}
+          <a href="{% url 'follow' user.username %}"
+             class="btn btn-default btn-block"
+             role="button">
+            Follow
+          </a>
+          {% endif %}
+        {% endif %}
+
+        {% load static %}
+        {% if user.userprofile.img %}
+        <img src="{{user.userprofile.img.url}}" class="img-thumbnail">
+        {% else %}
+        <img src="{% static 'images/default.jpg' %}" class="img-thumbnail">
+        {% endif %}
+        <p>User Name : {{user.username}}</p>
+        <p>First Name : {{user.first_name}}</p>
+        <p>Last Name : {{user.last_name}}</p>
+        <p>Age : {{user.userprofile.age}}</p>
+        <p>Bio : {{user.userprofile.bio}}</p>
+
+
+      </div>
+
+      <div class="col-sm-8 col-md-8 col-lg-8">
+        <h1>All Posts !</h1>
+        {% for post in post_list %}
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h5 class="panel-title">
+                <a href="{% url 'view_profile' post.author.username %}">{{ post.title }}</a>
+              </h5>
+            </div>
+            <div class="panel-body">
+              {{ post.content }}
+            </div>
+            <div class="panel-footer text-muted">
+              {{ post.time }}, by <a href="{% url 'view_profile' post.author.username %}">{{ post.author }}</a>
+            </div>
+          </div>
+        {% endfor%}
+      </div>
+
+    </div>
+{% endblock %}

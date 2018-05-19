@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+Global Stream
+{% endblock%}
+
+{% block js_block %}
+        <script src="../static/js/jquery-3.2.1.min.js" type="text/javascript"></script>
+        <script src="../static/js/grumblr.js" type="text/javascript"></script>
+{% endblock %}
+
+{% block content %}
+
+  <h1 class="text-center">Global Stream</h1>
+    <input type="hidden" id="timestamp" value="{{timestamp}}">
+{#    <input type="hidden" id="timestamppost" value="{{timestamppost}}">#}
+    <!--all the posts are listed here-->
+    <div id='post-list'></div>
+
+{% endblock %}
